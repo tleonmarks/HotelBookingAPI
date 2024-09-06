@@ -1,0 +1,36 @@
+Install-Package Microsoft.Data.SqlClient
+
+
+Create Connection Service:
+
+
+Registering the SqlConnectionFactory Service:
+register this SqlConnectionFactory service in the Program.cs class file as follows:
+
+builder.Services.AddTransient<SqlConnectionFactory>();
+
+Creating a Custom Response Format:
+
+
+Globalization Invariant Mode Set to FALSE.
+
+Globalization Invariant Mode is a feature that is typically used in .NET applications to reduce the deployment size by not including culture-specific data. So, open the Project Properties file and set the InvariantGlobalization to false as follows:
+
+<InvariantGlobalization>false</InvariantGlobalization>
+
+Modifying JSON Serialization Settings:
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
+
+Integrating Logging Framework:
+
+
+Install-Package Serilog.AspNetCore
+Install-Package Serilog.Sinks.File
+Install-Package Serilog.Settings.Configuration
+
+Initialize Serilog in Program.cs
+
